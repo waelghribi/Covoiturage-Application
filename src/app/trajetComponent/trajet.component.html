@@ -1,0 +1,30 @@
+<div class="trajets-container">
+    <h2>Créer un nouveau trajet</h2>
+  
+    <form (ngSubmit)="ajouterTrajet()" #formTrajet="ngForm">
+      <label for="depart">Ville de départ :</label>
+      <select id="depart" name="depart" required [(ngModel)]="nouveauTrajet.depart">
+        <option *ngFor="let ville of villes" [value]="ville">{{ ville }}</option>
+      </select>
+  
+      <label for="destination">Ville d'arrivée :</label>
+      <select id="destination" name="destination" required [(ngModel)]="nouveauTrajet.destination">
+        <option *ngFor="let ville of villes" [value]="ville">{{ ville }}</option>
+      </select>
+  
+      <label for="date">Date :</label>
+      <input type="date" id="date" name="date" required [(ngModel)]="nouveauTrajet.date">
+  
+      <button type="submit">Ajouter le trajet</button>
+    </form>
+  
+    <hr>
+  
+    <h3>Liste des trajets disponibles :</h3>
+    <ul>
+      <li *ngFor="let trajet of trajets">
+        {{ trajet.depart }} → {{ trajet.destination }} le {{ trajet.date }}
+      </li>
+    </ul>
+  </div>
+  
