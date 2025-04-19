@@ -1,1 +1,44 @@
-<p>liste-conducteur-component works!</p>
+<div class="profile-container">
+    <h1>Mon Profil de Conducteur</h1>
+  
+    <form (ngSubmit)="enregistrerProfil()" novalidate>
+      
+      <!-- Informations personnelles du conducteur -->
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" [(ngModel)]="conducteur.nom" name="nom" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" id="email" [(ngModel)]="conducteur.email" name="email" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="telephone">Téléphone :</label>
+        <input type="tel" id="telephone" [(ngModel)]="conducteur.telephone" name="telephone" required>
+      </div>
+  
+      <!-- Informations du véhicule -->
+      <div class="form-group">
+        <h3>Informations sur le Véhicule</h3>
+  
+        <label for="marque">Marque :</label>
+        <input type="text" id="marque" [(ngModel)]="conducteur.vehicule.marque" name="marque" required>
+  
+        <label for="modele">Modèle :</label>
+        <input type="text" id="modele" [(ngModel)]="conducteur.vehicule.modele" name="modele" required>
+  
+        <label for="annee">Année :</label>
+        <input type="number" id="annee" [(ngModel)]="conducteur.vehicule.annee" name="annee" required>
+  
+        <label for="plaqueImmatriculation">Plaque d'immatriculation :</label>
+        <input type="text" id="plaqueImmatriculation" [(ngModel)]="conducteur.vehicule.plaqueImmatriculation" name="plaqueImmatriculation" required>
+      </div>
+  
+      <button type="submit" [disabled]="!conducteur.nom || !conducteur.email || !conducteur.telephone || !conducteur.vehicule.marque || !conducteur.vehicule.modele || !conducteur.vehicule.annee || !conducteur.vehicule.plaqueImmatriculation">
+        Enregistrer le Profil
+      </button>
+    </form>
+  </div>
+  
