@@ -1,0 +1,187 @@
+<!-- Hero Section -->
+<div class="hero-wrap ftco-animate">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Proposer un trajet</h1>
+        <div class="breadcrumbs">
+          <p><span>Accueil</span> / <span>Proposer un trajet</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Offer Form Section -->
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="offerForm" (ngSubmit)="onSubmit()">
+              <!-- Departure and Destination -->
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>Ville de départ</label>
+                  <input type="text" formControlName="departureCity" class="form-control" 
+                         [ngClass]="{ 'is-invalid': submitted && f['departureCity'].errors }">
+                  <div *ngIf="submitted && f['departureCity'].errors" class="invalid-feedback">
+                    <div *ngIf="f['departureCity'].errors['required']">La ville de départ est requise</div>
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>Ville de destination</label>
+                  <input type="text" formControlName="destinationCity" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['destinationCity'].errors }">
+                  <div *ngIf="submitted && f['destinationCity'].errors" class="invalid-feedback">
+                    <div *ngIf="f['destinationCity'].errors['required']">La ville de destination est requise</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date and Time -->
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>Date de départ</label>
+                  <input type="date" formControlName="departureDate" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }">
+                  <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['departureDate'].errors['required']">La date est requise</div>
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>Heure de départ</label>
+                  <input type="time" formControlName="departureTime" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['departureTime'].errors }">
+                  <div *ngIf="submitted && f['departureTime'].errors" class="invalid-feedback">
+                    <div *ngIf="f['departureTime'].errors['required']">L'heure est requise</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vehicle and Seats -->
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>Véhicule</label>
+                  <input type="text" formControlName="vehicle" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['vehicle'].errors }"
+                         placeholder="Ex: Renault Clio">
+                  <div *ngIf="submitted && f['vehicle'].errors" class="invalid-feedback">
+                    <div *ngIf="f['vehicle'].errors['required']">Le véhicule est requis</div>
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>Places disponibles</label>
+                  <input type="number" formControlName="availableSeats" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['availableSeats'].errors }">
+                  <div *ngIf="submitted && f['availableSeats'].errors" class="invalid-feedback">
+                    <div *ngIf="f['availableSeats'].errors['required']">Le nombre de places est requis</div>
+                    <div *ngIf="f['availableSeats'].errors['min']">Minimum 1 place</div>
+                    <div *ngIf="f['availableSeats'].errors['max']">Maximum 8 places</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div class="form-group">
+                <label>Prix par place</label>
+                <div class="input-group">
+                  <input type="number" formControlName="pricePerSeat" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['pricePerSeat'].errors }">
+                  <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                  </div>
+                  <div *ngIf="submitted && f['pricePerSeat'].errors" class="invalid-feedback">
+                    <div *ngIf="f['pricePerSeat'].errors['required']">Le prix est requis</div>
+                    <div *ngIf="f['pricePerSeat'].errors['min']">Le prix doit être positif</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preferences -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input type="checkbox" formControlName="allowSmoking" class="form-check-input" id="smoking">
+                    <label class="form-check-label" for="smoking">Fumeur autorisé</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input type="checkbox" formControlName="allowPets" class="form-check-input" id="pets">
+                    <label class="form-check-label" for="pets">Animaux autorisés</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Additional Information -->
+              <div class="form-group mt-3">
+                <label>Informations complémentaires</label>
+                <textarea formControlName="additionalInfo" class="form-control" rows="3"
+                          placeholder="Ajoutez des détails sur votre trajet..."></textarea>
+              </div>
+
+              <!-- Submit Buttons -->
+              <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Publier le trajet
+                </button>
+                <button type="button" class="btn btn-secondary ml-2" (click)="resetForm()">
+                  Réinitialiser
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center">
+        <h2 class="mb-4">Pourquoi proposer un trajet ?</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-wallet"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Économisez sur vos trajets</h3>
+            <p>Partagez les frais de route avec vos passagers et réduisez significativement vos dépenses.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-chat"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Faites des rencontres</h3>
+            <p>Voyagez en bonne compagnie et rencontrez des personnes intéressantes pendant vos trajets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-planet-earth"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Protégez l'environnement</h3>
+            <p>Contribuez à la réduction des émissions de CO2 en partageant votre véhicule.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

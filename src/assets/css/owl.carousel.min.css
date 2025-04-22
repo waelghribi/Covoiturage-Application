@@ -1,0 +1,21 @@
+.owl-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .owl-carousel .owl-stage {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .owl-carousel .owl-item {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+  }
+  
+  .owl-carousel .owl-item img {
+    width: 100%;
+    display: block;
+  }
+  

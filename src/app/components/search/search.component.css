@@ -1,0 +1,112 @@
+.hero-wrap {
+  height: 300px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+}
+
+.hero-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-wrap .bread {
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.breadcrumbs {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.breadcrumbs span {
+  color: #fff;
+}
+
+.breadcrumbs span a {
+  color: #fff;
+}
+
+.sidebar-box {
+  margin-bottom: 30px;
+  padding: 25px;
+  font-size: 15px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+.heading-sidebar {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.ride-card {
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+.ride-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,.15);
+}
+
+.badge-primary {
+  background-color: #f86f2d;
+  border-color: #f86f2d;
+}
+
+.btn-outline-primary {
+  color: #f86f2d;
+  border-color: #f86f2d;
+}
+
+.btn-outline-primary:hover {
+  background-color: #f86f2d;
+  border-color: #f86f2d;
+  color: #fff;
+}
+
+.block-27 {
+  display: inline-block;
+}
+
+.block-27 ul {
+  padding: 0;
+  margin: 0;
+}
+
+.block-27 ul li {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.block-27 ul li a,
+.block-27 ul li span {
+  color: #000;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+}
+
+.block-27 ul li.active span {
+  background: #f86f2d;
+  color: #fff;
+  border: 1px solid transparent;
+}

@@ -1,0 +1,152 @@
+<!-- Hero Section -->
+<div class="hero-wrap" style="background-image: url('assets/images/bg_7.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+          <span class="mr-2"><a href="/">Accueil</a></span> <span>Rechercher</span>
+        </p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Rechercher un trajet</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Section -->
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <!-- Search Filters -->
+      <div class="col-lg-3 sidebar">
+        <div class="sidebar-box bg-light ftco-animate">
+          <h3 class="heading-2">Filtres</h3>
+          <form [formGroup]="searchForm" class="search-form">
+            <div class="form-group">
+              <label>Prix maximum</label>
+              <input type="number" class="form-control" formControlName="maxPrice">
+            </div>
+            <div class="form-group">
+              <label>Date de départ</label>
+              <input type="date" class="form-control" formControlName="departureDate">
+            </div>
+            <div class="form-group">
+              <label>Nombre de places</label>
+              <input type="number" class="form-control" formControlName="seats">
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="smokingAllowed" formControlName="smokingAllowed">
+                <label class="custom-control-label" for="smokingAllowed">Fumeur autorisé</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="petsAllowed" formControlName="petsAllowed">
+                <label class="custom-control-label" for="petsAllowed">Animaux autorisés</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary py-3 px-5">Appliquer les filtres</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Search Results -->
+      <div class="col-lg-9">
+        <div class="row">
+          <!-- Search Bar -->
+          <div class="col-12 mb-4">
+            <div class="card ftco-animate">
+              <div class="card-body">
+                <form [formGroup]="quickSearchForm" (ngSubmit)="onQuickSearch()" class="search-form">
+                  <div class="form-row">
+                    <div class="col-md-4 mb-2">
+                      <input type="text" class="form-control" formControlName="departureCity" placeholder="Ville de départ">
+                    </div>
+                    <div class="col-md-4 mb-2">
+                      <input type="text" class="form-control" formControlName="destinationCity" placeholder="Ville d'arrivée">
+                    </div>
+                    <div class="col-md-4">
+                      <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results List -->
+          <div class="col-12">
+            <div *ngFor="let ride of rides" class="card ride-card mb-3 ftco-animate">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-md-3">
+                    <div class="text-center">
+                      <h3 class="mb-0">{{ride.departureTime | date:'HH:mm'}}</h3>
+                      <p class="text-muted">{{ride.departureDate | date:'dd MMM'}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="route-info">
+                      <h4>{{ride.departureCity}} → {{ride.destinationCity}}</h4>
+                      <div class="driver-info d-flex align-items-center mt-2">
+                        <img [src]="ride.driverPhoto || 'assets/images/person_1.jpg'" class="rounded-circle mr-2" width="40">
+                        <div>
+                          <p class="mb-0">{{ride.driverName}}</p>
+                          <div class="rating">
+                            <span class="icon-star text-warning"></span>
+                            <span>{{ride.rating}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 text-center">
+                    <div class="price-info">
+                      <h3 class="mb-0">{{ride.price}}€</h3>
+                      <p class="text-muted mb-2">{{ride.availableSeats}} places</p>
+                      <button class="btn btn-primary" (click)="bookRide(ride.id)">Réserver</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="ride-details mt-3">
+                  <div class="badges">
+                    <span *ngIf="ride.smokingAllowed" class="badge badge-secondary mr-2">
+                      <i class="icon-smoking"></i> Fumeur
+                    </span>
+                    <span *ngIf="ride.petsAllowed" class="badge badge-secondary mr-2">
+                      <i class="icon-paw"></i> Animaux
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div *ngIf="rides.length === 0" class="text-center py-5 ftco-animate">
+              <h3>Aucun trajet trouvé</h3>
+              <p>Essayez de modifier vos critères de recherche</p>
+            </div>
+
+            <!-- Pagination -->
+            <div *ngIf="rides.length > 0" class="row mt-5">
+              <div class="col text-center">
+                <div class="block-27">
+                  <ul>
+                    <li><a href="#" [class.disabled]="currentPage === 1">&lt;</a></li>
+                    <li *ngFor="let page of pages" [class.active]="page === currentPage">
+                      <a href="#" (click)="goToPage(page)">{{page}}</a>
+                    </li>
+                    <li><a href="#" [class.disabled]="currentPage === totalPages">&gt;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

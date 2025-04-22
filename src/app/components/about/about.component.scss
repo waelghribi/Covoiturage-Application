@@ -1,0 +1,210 @@
+.hero-wrap {
+  height: 300px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: .6;
+    background: #000;
+  }
+
+  .slider-text {
+    height: 300px;
+    color: #fff;
+
+    .breadcrumbs {
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+
+      span {
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .bread {
+      font-weight: 900;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.img-about {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 400px;
+  border-radius: 5px;
+}
+
+.ftco-counter {
+  background: #f8f9fa;
+  padding: 7em 0;
+
+  .block-18 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 30px 20px;
+    
+    &.color-1 {
+      background: #4e54c8;
+    }
+    
+    &.color-2 {
+      background: #6c63ff;
+    }
+    
+    &.color-3 {
+      background: #8f94fb;
+    }
+
+    .text {
+      position: relative;
+      
+      strong.number {
+        font-weight: 700;
+        font-size: 3rem;
+        color: #fff;
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      span {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #fff;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}
+
+.services-1 {
+  margin-bottom: 40px;
+  padding: 2em;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0px 3px 66px -24px rgba(0,0,0,0.2);
+  border-radius: 5px;
+
+  .icon {
+    display: block;
+    margin-bottom: 30px;
+    
+    i {
+      font-size: 4rem;
+      color: #4e54c8;
+    }
+  }
+
+  .desc {
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+.staff {
+  overflow: hidden;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+
+  .img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .text {
+    text-align: center;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .position {
+      color: #4e54c8;
+      display: block;
+    }
+
+    p {
+      margin-top: 10px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .ftco-social {
+    padding: 0;
+    margin: 0;
+    
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      
+      a {
+        color: #4e54c8;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Animation classes
+.ftco-animate {
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+} 

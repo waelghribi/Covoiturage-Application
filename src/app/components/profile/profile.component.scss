@@ -1,0 +1,245 @@
+.hero-wrap {
+  height: 300px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: .6;
+    background: #000;
+  }
+
+  .slider-text {
+    height: 300px;
+    color: #fff;
+
+    .breadcrumbs {
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+
+      span {
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .bread {
+      font-weight: 900;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+// Profile Sidebar Styles
+.profile-sidebar {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  .profile-header {
+    .profile-image {
+      position: relative;
+      
+      img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .rating {
+      i {
+        color: #ffd700;
+        margin-right: 2px;
+      }
+    }
+  }
+
+  .profile-stats {
+    h5 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0;
+      color: #4e54c8;
+    }
+
+    small {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+  }
+
+  .profile-preferences {
+    .preference-item {
+      i {
+        width: 20px;
+        color: #4e54c8;
+      }
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Profile Content Styles
+.profile-content {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  .nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+
+    .nav-item {
+      margin-bottom: -2px;
+
+      .nav-link {
+        border: none;
+        color: #495057;
+        font-weight: 500;
+        padding: 1rem 1.5rem;
+        
+        &.active {
+          color: #4e54c8;
+          border-bottom: 2px solid #4e54c8;
+        }
+
+        &:hover {
+          border-color: transparent;
+          color: #4e54c8;
+        }
+      }
+    }
+  }
+
+  .profile-form {
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 0.75rem;
+
+        &:focus {
+          border-color: #4e54c8;
+          box-shadow: 0 0 0 0.2rem rgba(78, 84, 200, 0.25);
+        }
+
+        &.is-invalid {
+          border-color: #dc3545;
+          background-image: none;
+        }
+      }
+
+      textarea.form-control {
+        resize: vertical;
+      }
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      
+      &:hover {
+        background: linear-gradient(135deg, 
+          adjust-color(#4e54c8, $lightness: -5%),
+          adjust-color(#8f94fb, $lightness: -5%)
+        );
+      }
+
+      &:disabled {
+        background: #a0a0a0;
+      }
+    }
+  }
+}
+
+// Vehicles List Styles
+.vehicles-list {
+  .vehicle-item {
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .vehicle-actions {
+      .btn {
+        padding: 0.25rem 0.5rem;
+        
+        i {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+// Reviews List Styles
+.reviews-list {
+  .review-item {
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+
+    .rating {
+      i {
+        color: #ffd700;
+        font-size: 0.875rem;
+        margin-right: 2px;
+      }
+    }
+  }
+}
+
+// Animation classes
+.ftco-animate {
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+} 

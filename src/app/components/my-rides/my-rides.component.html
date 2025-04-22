@@ -1,0 +1,197 @@
+<!-- Hero Section -->
+<div class="hero-wrap ftco-animate">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Mes trajets</h1>
+        <div class="breadcrumbs">
+          <p><span>Accueil</span> / <span>Mes trajets</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- My Rides Section -->
+<section class="ftco-section">
+  <div class="container">
+    <!-- Tabs Navigation -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8">
+        <ul class="nav nav-pills nav-fill" id="myRidesTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="offered-tab" data-bs-toggle="tab" data-bs-target="#offered" type="button" role="tab">
+              <i class="fas fa-car me-2"></i>Trajets proposés
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="booked-tab" data-bs-toggle="tab" data-bs-target="#booked" type="button" role="tab">
+              <i class="fas fa-user me-2"></i>Trajets réservés
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tabs Content -->
+    <div class="tab-content" id="myRidesTabContent">
+      <!-- Offered Rides Tab -->
+      <div class="tab-pane fade show active" id="offered" role="tabpanel">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Départ</th>
+                        <th>Destination</th>
+                        <th>Places</th>
+                        <th>Prix</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ride of offeredRides">
+                        <td>{{ride.departureDate | date:'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{ride.departureCity}}</td>
+                        <td>{{ride.destinationCity}}</td>
+                        <td>{{ride.availableSeats}}/{{ride.totalSeats}}</td>
+                        <td>{{ride.pricePerSeat}}€</td>
+                        <td>
+                          <span class="badge" [ngClass]="{
+                            'bg-success': ride.status === 'active',
+                            'bg-warning': ride.status === 'pending',
+                            'bg-danger': ride.status === 'cancelled'
+                          }">
+                            {{ride.status | titlecase}}
+                          </span>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-primary me-1" (click)="editRide(ride)">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                          <button class="btn btn-sm btn-danger" (click)="cancelRide(ride)">
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr *ngIf="offeredRides.length === 0">
+                        <td colspan="7" class="text-center">Aucun trajet proposé</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booked Rides Tab -->
+      <div class="tab-pane fade" id="booked" role="tabpanel">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Départ</th>
+                        <th>Destination</th>
+                        <th>Conducteur</th>
+                        <th>Prix</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ride of bookedRides">
+                        <td>{{ride.departureDate | date:'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{ride.departureCity}}</td>
+                        <td>{{ride.destinationCity}}</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img [src]="ride.driverPhoto" class="rounded-circle me-2" width="30" height="30">
+                            {{ride.driverName}}
+                          </div>
+                        </td>
+                        <td>{{ride.pricePerSeat}}€</td>
+                        <td>
+                          <span class="badge" [ngClass]="{
+                            'bg-success': ride.status === 'confirmed',
+                            'bg-warning': ride.status === 'pending',
+                            'bg-danger': ride.status === 'cancelled'
+                          }">
+                            {{ride.status | titlecase}}
+                          </span>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-primary me-1" (click)="viewRideDetails(ride)">
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button class="btn btn-sm btn-danger" (click)="cancelBooking(ride)">
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr *ngIf="bookedRides.length === 0">
+                        <td colspan="7" class="text-center">Aucun trajet réservé</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-car"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">{{totalOfferedRides}}</h3>
+            <p>Trajets proposés</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-user"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">{{totalBookedRides}}</h3>
+            <p>Trajets réservés</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media block-6 services text-center d-block">
+          <div class="icon d-flex justify-content-center align-items-center mb-4">
+            <span class="flaticon-wallet"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">{{totalSavings}}€</h3>
+            <p>Économies réalisées</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

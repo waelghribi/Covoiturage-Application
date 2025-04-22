@@ -1,0 +1,153 @@
+<!-- Hero Section -->
+<div class="hero-wrap" style="background-image: url('assets/images/bg_7.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+          <span class="mr-2"><a href="/">Accueil</a></span> <span>Contact</span>
+        </p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contactez-nous</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Info Section -->
+<section class="ftco-section contact-section">
+  <div class="container">
+    <div class="row d-flex mb-5 contact-info">
+      <div class="col-md-12 mb-4">
+        <h2 class="h3">Informations de contact</h2>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-md-4">
+        <div class="info bg-light p-4">
+          <p><span>Adresse:</span> 198 Avenue des Champs-Élysées, 75008 Paris, France</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info bg-light p-4">
+          <p><span>Téléphone:</span> <a href="tel://+33123456789">+33 1 23 45 67 89</a></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info bg-light p-4">
+          <p><span>Email:</span> <a href="mailto:contact&#64;covoiturage.fr">contact&#64;covoiturage.fr</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map and Contact Form -->
+    <div class="row block-9">
+      <div class="col-md-6 order-md-last d-flex">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-light p-5 contact-form">
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="name" placeholder="Votre nom"
+                   [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">Le nom est requis</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" formControlName="email" placeholder="Votre email"
+                   [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">L'email est requis</div>
+              <div *ngIf="f['email'].errors['email']">L'email n'est pas valide</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="subject" placeholder="Sujet"
+                   [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }">
+            <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+              <div *ngIf="f['subject'].errors['required']">Le sujet est requis</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea cols="30" rows="7" class="form-control" formControlName="message" placeholder="Message"
+                      [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"></textarea>
+            <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+              <div *ngIf="f['message'].errors['required']">Le message est requis</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary py-3 px-5" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Envoyer le message
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6 d-flex">
+        <div id="map" class="bg-light"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section ftco-animate text-center">
+        <h2 class="mb-4">Questions fréquentes</h2>
+        <p>Retrouvez les réponses aux questions les plus courantes sur notre service de covoiturage.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="accordion" id="faqAccordion">
+          <!-- FAQ Item 1 -->
+          <div class="card ftco-animate">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+                  Comment fonctionne le système de réservation ?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#faqAccordion">
+              <div class="card-body">
+                Recherchez votre trajet, choisissez celui qui vous convient et réservez en quelques clics. Le paiement est sécurisé et la réservation est instantanée.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="card ftco-animate">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
+                  Comment sont gérés les paiements ?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Les paiements sont sécurisés et traités par notre partenaire de paiement. L'argent est transféré au conducteur une fois le trajet effectué.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="card ftco-animate">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">
+                  Que faire en cas d'annulation ?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Les annulations sont possibles jusqu'à 24h avant le départ. Le remboursement est automatique selon nos conditions d'annulation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
