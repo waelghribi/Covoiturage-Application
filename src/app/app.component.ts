@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MainLayoutComponent],
-  template: `
-    <app-main-layout>
-      <router-outlet></router-outlet>
-    </app-main-layout>
-  `
+  imports: [RouterModule, CommonModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'covoiturage-frontend';
+  currentYear = new Date().getFullYear();
 }
