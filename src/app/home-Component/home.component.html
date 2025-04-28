@@ -1,32 +1,71 @@
-
-
 <main class="home-container">
-  <!-- Section Héros -->
+  <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Bienvenue sur Covoiturage+ 🚗</h1>
+      <h1>Bienvenue sur Covoiturage+ <span class="hero-emoji">🚗</span></h1>
       <p>Voyagez ensemble, économisez de l'argent et réduisez votre impact environnemental.</p>
-      <a routerLink="/trajets" class="cta-button">Rechercher un trajet</a>
+      <a routerLink="/trajets" class="cta-button">
+        Rechercher un trajet
+        <span class="cta-icon">→</span>
+      </a>
     </div>
   </section>
 
-  <!-- Section Avantages -->
+  <!-- Features Section -->
   <section class="features">
-    <article class="feature">
-      <h2>👥 Communauté fiable</h2>
-      <p>Profils vérifiés et évaluations pour voyager en toute confiance.</p>
-    </article>
+    <h2 class="features-title">Pourquoi choisir Covoiturage+</h2>
+    
+    <div class="features-grid">
+      <article class="feature" *ngFor="let feature of features">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </article>
+    </div>
+  </section>
 
-    <article class="feature">
-      <h2>💸 Économique</h2>
-      <p>Partagez les frais de transport et réalisez des économies.</p>
-    </article>
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2 class="section-title">Comment ça marche</h2>
+    
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Créez votre compte</h3>
+        <p>Inscrivez-vous en quelques secondes et complétez votre profil.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Trouvez votre trajet</h3>
+        <p>Recherchez parmi des milliers de trajets disponibles.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Réservez et voyagez</h3>
+        <p>Confirmez votre réservation et profitez de votre voyage.</p>
+      </div>
+    </div>
+  </section>
 
-    <article class="feature">
-      <h2>🌍 Écoresponsable</h2>
-      <p>Réduisez votre empreinte carbone grâce au covoiturage.</p>
-    </article>
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2 class="section-title">Ce que disent nos utilisateurs</h2>
+    
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"Grâce à Covoiturage+, je voyage à moindre coût tout en rencontrant des personnes formidables. Une super expérience !"</div>
+      <div class="testimonial-author">— Marie D.</div>
+    </div>
+  </section>
+
+  <!-- Call to Action Bottom -->
+  <section class="cta-bottom">
+    <h2>Prêt à commencer votre voyage ?</h2>
+    <a routerLink="/inscription" class="cta-button secondary">
+      S'inscrire maintenant
+      <span class="cta-icon">→</span>
+    </a>
   </section>
 </main>
-
-
